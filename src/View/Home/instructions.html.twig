@@ -4,7 +4,7 @@
     <div class="main-container">
         <h1>Cupcake Generator</h1>
         <div class="instructions">
-            <h2>🧁 Step 1</h2>
+            <h2>🧁 Step 1 - Create the database</h2>
             <p>
                 From this diagram, create database.
             </p>
@@ -12,12 +12,12 @@
                 <img src="/assets/images/diagram.png" class="diagram" alt="database model">
             </div>
 
-            <h2>🧁 Step 2</h2>
+            <h2>🧁 Step 2 - Create one accessory</h2>
             <p>
                 From <code>add()</code> in <code>AccessoryController</code> <br>
                 Make the <a href="/accessory/add">accessory form</a> works (do not forget data validation).<br>
                 Once your form persist data in database, add some accessories for your cupcakes :
-                If you want, we give you this list of images. But you can add your own images !<br>
+                If you want, we give you this list of images. But you can add your own images!<br>
             </p>
             <ul>
                 <li>
@@ -37,37 +37,37 @@
                 </li>
             </ul>
 
-            <h2>🧁 Step 3</h2>
+            <h2>🧁 Step 3 - Show all accessories</h2>
             <p>
                 From <code>list()</code> in <code>AccessoryController</code><br>
                 Display all accessories on <a href="/accessory/list">My accessories</a> route.<br>
                 You are free to design this page.
             </p>
 
-            <h2>🧁 Step 4</h2>
+            <h2>🧁 Step 4 - Create a cupcake</h2>
             <p>
                 From <code>add()</code> in <code>CupcakeController</code><br>
                 Make the <a href="/cupcake/add">cupcake form</a> works.<br>
                 Before managing the post, don't forget to manage the accessories to display them in the select field.
             </p>
 
-            <h2>🧁 Step 5</h2>
+            <h2>🧁 Step 5 - Show all the cupcakes</h2>
             <p>
                 From <code>list()</code> in <code>CupcakeController</code><br>
+                Make the <a href="/cupcake/list">cupcake list</a> works.<br>
                 Display all cupcakes on the list, order by ID, DESC.<br>
                 You already have a twig page (Cupcake/list.html.twig) who just expect a cupcakes array.<br>
-                Be sure to display the cupcakes accessories on this page ! (use a SQL JOIN)
+                Be sure to display the cupcakes accessories on this page! (use a SQL JOIN)
             </p>
 
-            <h2>🧁 Step 6</h2>
+            <h2>🧁 Step 6 - Show one cupcake</h2>
             <p>
-                On the <a href="/cupcake/list">Cupcake list</a> there is an href link around each cupcake to show
+                On the <a href="/cupcake/list">cupcake list</a> there is an href link around each cupcake to show
                 selected cupcake<br>
-                You have to create the method and the view for this step.<br>
-                Be sure to display the cupcake accessory on this page ! (use a SQL JOIN)
+                You have to create the route, the controller method and the view for this step.<br>
             </p>
 
-            <h2>🧁 Step 7</h2>
+            <h2>🧁 Step 7 - Background color generator</h2>
             <p>
                 On the show cupcake page, change background of <code>&lt;div class="main-container"&gt;</code>
                 (inline style is allow) according to the average of cupcake 3 colors.
@@ -111,7 +111,7 @@
                 the 3 "blue" parts, then concatenate the 3 values to obtain the new color.
             </p>
 
-            <h2>⭐ Bonus</h2>
+            <h2>⭐ Bonus - Title color</h2>
             <ol>
                 <li>On the show cupcake page, display the name of the cupcake in the top <code>h1</code> of <code>&lt;div
                         class="main-container"&gt;</code></li>
