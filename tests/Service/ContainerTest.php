@@ -11,7 +11,7 @@ class ContainerTest extends TestCase
     {
         $container = new Container();
 
-        $this->assertEqualsCanonicalizing($container->packages(7), $this->getProvider(7));
+        $this->assertEquals($container->packages(7), $this->getProvider(7));
         $this->assertEqualsCanonicalizing($container->packages(14), $this->getProvider(14));
         $this->assertEqualsCanonicalizing($container->packages(16), $this->getProvider(16));
         $this->assertEqualsCanonicalizing($container->packages(20), $this->getProvider(20));
