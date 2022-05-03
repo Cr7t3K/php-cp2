@@ -1,10 +1,20 @@
 {% extends 'layout.html.twig' %}
 
+{% block stylesheet %}
+	{{ parent() }}
+	<style>
+		#spoilContentOne,
+		#spoilContentTwo {
+			display: none;
+		}
+	</style>
+{% endblock %}
+
 {% block content %}
 	<div class="main-container">
 		<h1>Cupcake Generator</h1>
 		<div class="instructions">
-			<h2>🧁 Step 1 - Create the database</h2>
+			<h2>🧁 Step 1</h2>
 			<p>
 				From this diagram, create database.
 			</p>
@@ -12,7 +22,7 @@
 				<img src="/assets/images/diagram.png" class="diagram" alt="database model">
 			</div>
 
-			<h2>🧁 Step 2 - Create one accessory</h2>
+			<h2>🧁 Step 2</h2>
 			<p>
 				From
 				<code>add()</code>
@@ -23,7 +33,7 @@
 				<a href="/accessory/add">accessory form</a>
 				works (do not forget data validation).<br>
 				Once your form persist data in database, add some accessories for your cupcakes :
-				                If you want, we give you this list of images. But you can add your own images!<br>
+																																																																																																																																																																																																																																																																																																										                If you want, we give you this list of images. But you can add your own images !<br>
 			</p>
 			<ul>
 				<li>
@@ -43,7 +53,7 @@
 				</li>
 			</ul>
 
-			<h2>🧁 Step 3 - Show all accessories</h2>
+			<h2>🧁 Step 3</h2>
 			<p>
 				From
 				<code>list()</code>
@@ -55,7 +65,7 @@
 				You are free to design this page.
 			</p>
 
-			<h2>🧁 Step 4 - Create a cupcake</h2>
+			<h2>🧁 Step 4</h2>
 			<p>
 				From
 				<code>add()</code>
@@ -67,87 +77,94 @@
 				Before managing the post, don't forget to manage the accessories to display them in the select field.
 			</p>
 
-			<h2>🧁 Step 5 - Show all the cupcakes</h2>
+			<h2>🧁 Step 5</h2>
 			<p>
 				From
 				<code>list()</code>
 				in
 				<code>CupcakeController</code><br>
-				Make the
-				<a href="/cupcake/list">cupcake list</a>
-				works.<br>
 				Display all cupcakes on the list, order by ID, DESC.<br>
 				You already have a twig page (Cupcake/list.html.twig) who just expect a cupcakes array.<br>
-				Be sure to display the cupcakes accessories on this page! (use a SQL JOIN)
+				Be sure to display the cupcakes accessories on this page ! (use a SQL JOIN)
 			</p>
 
-			<h2>🧁 Step 6 - Show one cupcake</h2>
+			<h2>🧁 Step 6</h2>
 			<p>
 				On the
-				<a href="/cupcake/list">cupcake list</a>
+				<a href="/cupcake/list">Cupcake list</a>
 				there is an href link around each cupcake to show
-				                selected cupcake<br>
-				You have to create the route, the controller method and the view for this step.<br>
+																																																																																																																																																																																																																																																																																																										                selected cupcake<br>
+				You have to create the method and the view for this step.<br>
+				Be sure to display the cupcake accessory on this page ! (use a SQL JOIN)
 			</p>
 
-			<h2>🧁 Step 7 - Background color generator</h2>
+			<h2>🧁 Step 7</h2>
 			<p>
-				On the show cupcake page, change background of
-				<code>&lt;div class="main-container"&gt;</code>
-				(inline style is allow) according to the average of cupcake 3 colors.
+				To have an optimal packaging when sending my cupcakes, I need in the logistics page, the right number of container (box)
+			</p>
+			<p>
+				<u>Important !!</u>
+				I would need to have the minimum of empty space in my containers and of course the minimum of container.
+			</p>
+			<p>
+				<u>Test !!</u>
+				As in code wars, you have some tests provided in file tests/Service/ContainerTest
+			</p>
+			<p>
+				Exemple 1 : 7 (1 container M, 1 container S)<br/>
+				Exemple 2 : 14 (1 container L, 1 container M, 1 container S and 1 space)<br/>
+				Exemple 3 : 16 (2 container L)<br/>
+				Exemple 4 : 20 (3 container L, 2 container S )<br/>
 			</p>
 			<ol>
 				<li>
 					Create a class in :
-					<code>/src/Service/ColorGenerator.php</code>
+					<code>/src/Service/Container.php</code>
 				</li>
 				<li>
-					In this class, create a method :
-					<code>generateBackground(array $colors): string
-					</code><br>
-					<code>$colors</code>
-					is an array containing the 3 colors (in hexadecimal format) for each cream
-					                    layer of the showed cupcake<br>
-					This method will return an hexadecimal color who is an
-					<strong>average</strong>
-					of the 3 cream
-					                    colors.
-					<br>
+					In this class, create a method:
+					<br/>
+					packages(int $numberCake) with
+				</li>
+				<li>
+					In this method, create 3 constantes:
+					<br/>
+					SMALL = 2, MEDIUM = 5 and LARGE = 8
+				</li>
+				<li>
+					You should also start creating the form in the
+					<a href="/logistics">logistics</a>
+					page
 				</li>
 			</ol>
-			<p>
-				<strong>Tips</strong>
-				:
-				<br>
-				This is how hexadecimal colors work :
-			</p>
-			<div class="center">
-				<img src="/assets/images/hexcode.gif" alt="">
-			</div>
-			<p>
-				With
-				<code>#3C00A6</code>
-				we have :
-			</p>
-			<ul>
-				<li>3C : Quantity of red</li>
-				<li>00 : Quantity of green</li>
-				<li>A6 : Quantity of blue</li>
-			</ul>
-			<p>
-				Hexadecimal is made of numbers 0 to 9 and letters A to F<br>
-				We can transform hexadecimal to a number in php.
-				                With
-				<a target="_blank" href="https://www.php.net/manual/fr/function.hexdec.php">hexdec</a>
-				and reverse with
-				<a target="_blank" href="https://www.php.net/manual/fr/function.dechex.php">
-					dechex
-				</a>
-			</p>
-			<p>
-				To calculate average color, calculate average of the 3 "red" parts, the 3 "green" parts and
-				                the 3 "blue" parts, then concatenate the 3 values to obtain the new color.
-			</p>
+			<h5>Tips 1</h5>
+			<button id="btnSpoilOne">Spoil One</button>
+			<div id="spoilContentOne">
+				<img src="/assets/images/1.png" class="diagram" alt="1"></div>
+			<button id="btnSpoilTwo">Spoil Two</button>
+			<div id="spoilContentTwo">
+				<img src="/assets/images/2.png" class="diagram" alt="2"></div>
 		</div>
 	</div>
+
+
+	{{ parent() }}
+
+	<script>
+		let btnSpoilOne = document.querySelector('#btnSpoilOne');
+let spoilContentOne = document.querySelector('#spoilContentOne');
+let btnSpoilTwo = document.querySelector('#btnSpoilTwo');
+let spoilContentTwo = document.querySelector('#spoilContentTwo');
+
+btnSpoilOne.addEventListener('click', () => {
+spoilContentOne.style.display = (spoilContentOne.dataset.toggled ^= 1) ? "block" : "none";
+});
+
+btnSpoilTwo.addEventListener('click', () => {
+spoilContentTwo.style.display = (spoilContentTwo.dataset.toggled ^= 1) ? "block" : "none";
+});
+	</script>
+
+
 {% endblock %}
+{% block javascript %}{% endblock %}
