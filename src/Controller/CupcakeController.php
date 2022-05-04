@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Service\Container;
+
 /**
  * Class CupcakeController
  *
