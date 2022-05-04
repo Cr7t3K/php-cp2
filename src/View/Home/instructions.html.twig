@@ -1,15 +1,5 @@
 {% extends 'layout.html.twig' %}
 
-{% block stylesheet %}
-	{{ parent() }}
-	<style>
-		#spoilContentOne,
-		#spoilContentTwo {
-			display: none;
-		}
-	</style>
-{% endblock %}
-
 {% block content %}
 	<div class="main-container">
 		<h1>Cupcake Generator</h1>
@@ -33,7 +23,6 @@
 				<a href="/accessory/add">accessory form</a>
 				works (do not forget data validation).<br>
 				Once your form persist data in database, add some accessories for your cupcakes :
-																																																																																																																																																																																																																																																																																																																		                If you want, we give you this list of images. But you can add your own images !<br>
 			</p>
 			<ul>
 				<li>
@@ -93,82 +82,65 @@
 				On the
 				<a href="/cupcake/list">Cupcake list</a>
 				there is an href link around each cupcake to show
-																																																																																																																																																																																																																																																																																																																		                selected cupcake<br>
+
 				You have to create the method and the view for this step.<br>
 				Be sure to display the cupcake accessory on this page ! (use a SQL JOIN)
 			</p>
 
 			<h2>🧁 Step 7</h2>
 			<p>
-				To have an optimal packaging when sending my cupcakes, I need in the logistics page, the right number of container (box)
+				Now, we want to send our cupcakes. To optmize packaging, we need to put cupcakes in containers.
+												We have 3 sizes of boxes
+				<ul>
+					<li>Small : 2 cupakes max</li>
+					<li>Medium : 5 cupakes max</li>
+					<li>Large : 8 cupakes max</li>
+				</ul>
 			</p>
 			<p>
 				<u>Important !!</u>
-				I would need to have the minimum of empty space in my containers and of course the minimum of container.
+				An optimize packaging means a minimum number of containers and the minimum empty spaces in not full 
+				containers. If we have multiple possibilities, we will try to use larger boxes first.
 			</p>
+			<ul>
+				<li>Exemple 1 : 7 cupcakes => 1 container L (and 1 empty slot)</li>
+				<li>Exemple 2 : 14 cupcakes => 1 container L, 1 container M, 1 container S (1 empty slot)</li>
+				<li>Exemple 3 : 16 => 2 containers L</li>
+				<li>Exemple 4 : 18 => 2 containers L, 1 container S</li>
+				<li>Exemple 5 : 20 => 2 containers L, 1 container M (1 empty slot)</li>
+			</ul>
 			<p>
 				<u>Test !!</u>
-				As in code wars, you have some tests provided in file tests/Service/ContainerTest
+				As in code wars, you have some tests provided in file
+				<i>tests/Service/ContainerTest</i>
+				You can launch tests using the command
+				<code>php vendor/bin/phpunit --colors=auto tests</code>
+				in your terminal.
 			</p>
-			<p>
-				<u>Command to Test</u><br/>
-				./vendor/bin/phpunit
-			</p>
-			<p>
-				Exemple 1 : 7 (1 container M, 1 container S)<br/>
-				Exemple 2 : 14 (1 container L, 1 container M, 1 container S and 1 space)<br/>
-				Exemple 3 : 16 (2 container L)<br/>
-				Exemple 4 : 20 (3 container L, 2 container S )<br/>
-			</p>
+
 			<ol>
 				<li>
-					Create a class in :
+					Look at the file :
 					<code>/src/Service/Container.php</code>
 				</li>
 				<li>
-					In this class, create a method:
-					<br/>
-					packages(int $numberCake) with
+					In this class Container, create a method
+					<code>inbox(int $numberCake): array</code><br/>
+					which shoud return an array with:
+					<code>[number of L boxes, number of M boxes, number of S boxes]</code>
 				</li>
 				<li>
-					In this method, create 3 constantes:
-					<br/>
-					SMALL = 2, MEDIUM = 5 and LARGE = 8
+					In this class, create 3 constants :	SMALL = 2, MEDIUM = 5 and LARGE = 8
 				</li>
 				<li>
-					You should also start creating the form in the
+					When the method works and tests are green, look at page
 					<a href="/logistics">logistics</a>
-					page
+					<br>
+					You will find a form where you can indicate number of cupcakes. 
+					Then, using your inbox() method, display thenumber of each container (L, M and S) from the number of
+					cupcakes submitted in the form.
 				</li>
 			</ol>
-			<h5>Tips 1</h5>
-			<button id="btnSpoilOne">Spoil One</button>
-			<div id="spoilContentOne">
-				<img src="/assets/images/1.png" class="diagram" alt="1"></div>
-			<button id="btnSpoilTwo">Spoil Two</button>
-			<div id="spoilContentTwo">
-				<img src="/assets/images/2.png" class="diagram" alt="2"></div>
 		</div>
 	</div>
-
-
-	{{ parent() }}
-
-	<script>
-		let btnSpoilOne = document.querySelector('#btnSpoilOne');
-let spoilContentOne = document.querySelector('#spoilContentOne');
-let btnSpoilTwo = document.querySelector('#btnSpoilTwo');
-let spoilContentTwo = document.querySelector('#spoilContentTwo');
-
-btnSpoilOne.addEventListener('click', () => {
-spoilContentOne.style.display = (spoilContentOne.dataset.toggled ^= 1) ? "block" : "none";
-});
-
-btnSpoilTwo.addEventListener('click', () => {
-spoilContentTwo.style.display = (spoilContentTwo.dataset.toggled ^= 1) ? "block" : "none";
-});
-	</script>
-
-
 {% endblock %}
-{% block javascript %}{% endblock %}

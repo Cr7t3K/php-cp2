@@ -41,24 +41,4 @@ class CupcakeController extends AbstractController
         //TODO Retrieve all cupcakes
         return $this->twig->render('Cupcake/list.html.twig');
     }
-
-    public function logistics()
-    {
-
-
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            //TODO Add your code here to call your Container service
-
-            return $this->twig->render(
-                'Cupcake/logistics.html.twig',
-                [
-                    'containers' => 'Call here method of Service'
-                ]
-            );
-        }
-
-        return $this->twig->render(
-            'Cupcake/logistics.html.twig'
-        );
-    }
 }
