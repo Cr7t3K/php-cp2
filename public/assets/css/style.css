@@ -174,3 +174,9 @@ input[type="color"] {
 a:any-link {
     text-decoration: none;
 }
+
+pre {
+    background-color: var(--dark);
+    color: var(--light);
+    padding: var(--spacing);
+}
